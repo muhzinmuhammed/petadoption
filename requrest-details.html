@@ -78,13 +78,7 @@
                         </div>
                         
                     </div>
-                    <ul class="nav header-navbar-rht">
-                        
-                        <li>
-                            <a href="rental-order-step2.html" class="btn btn-primary">Go to Order</a>
-                        </li>
-                        
-                    </ul>
+                   
                 </nav>
             </header>
             <!-- /Header -->
@@ -96,31 +90,42 @@
             <section class="buy-detailview">
                 <div class="container">
 
-					<!-- Details -->
-                    <div class="row align-items-center page-head">
-                        <div class="col-lg-8">
-                            <div class="buy-btn">
-                                <span class="buy">Dog</span>
-                                <span class="appartment">vaccinated</span>
-                            </div>
-                            <div class="page-title">
-                                <h3>Modern Apartment in the City Center<span><img src="assets/img/icons/location-icon.svg" alt="Image"></span></h3>
-                                <p><i class="feather-map-pin"></i> 318-330 S Oakley Blvd, Chicago, IL 60612, USA</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="latest-update">
-                                <h5>Post on : 15 Jan 2023</h5>
-                                <p>₹4,000</p>
-                                <ul class="other-pages">
-                                    <li><a href="javascript:void(0);"><i class="feather-share-2"></i>Share</a></li>
-                                    
-                                    <li><a href="javascript:void(0);"><i class="feather-heart"></i>Wishlist</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-					<!-- /Details -->
+					
+<!-- Details -->
+<div class="details-wrap">
+	<div class="detail-user-wrap">
+		<div class="detail-user-img">
+			<img src="assets/img/product/product-8.jpg" class="img-fluid" alt="Image">
+		</div>
+		<div class="user-wrap">
+			<div class="user-info-wrap">
+				<div class="col-lg-8">
+					<div class="buy-btn">
+						<span class="buy">Dog</span>
+						<span class="appartment">vaccinated</span>
+					</div>
+					<div class="page-title">
+						<h3>Modern Apartment in the City Center<span><img src="assets/img/icons/location-icon.svg" alt="Image"></span></h3>
+						<p><i class="feather-map-pin"></i> 318-330 S Oakley Blvd, Chicago, IL 60612, USA</p>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="latest-update">
+						<h5>Post on : 15 Jan 2023</h5>
+						<p>₹4,000</p>
+						<ul class="other-pages">
+							<li><a href="javascript:void(0);"><i class="feather-share-2"></i>Share</a></li>
+							
+							<li><a href="javascript:void(0);"><i class="feather-heart"></i>Wishlist</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>								
+			
+		</div>
+	</div>
+</div>
+<!-- /Details -->
 
                     <div class="row">
                         <div class="col-lg-8">
@@ -216,7 +221,7 @@
 								</div>
 								<div class="user-active bg-white p-0">
 									<div class="user-img">
-										<a href="javascript:void(0);"><img class="avatar" src="assets/img/profiles/avatar-03.jpg" alt="Image"></a>
+										<a href="javascript:void(0);"><img class="avatar" src="assets/img/profiles/avatar-01.jpg" alt="Image"></a>
 									</div>
 									<div class="user-name">
 										<h4><a href="javascript:void(0);">John Collins</a></h4>
@@ -257,18 +262,15 @@
 									
 									
 									
-									
-									
-									
-									
-									
-									
 									<div class="col-lg-12">
-										<div class="review-form-btn">
-											<a href="javascript:void(0);" class="btn btn-primary">Application Rejected</a>
-											<a href="javascript:void(0);" class="reset-btn">Application Approved</a>
+										<div class="booking-details-btn">
+											<a href="contact-us.html" class="btn btn-lightred me-2">REJECT</a>
+											<a href="contact-us.html" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success">APPROVED</a>
 										</div>
 									</div>
+									
+									
+									
 								</div>
 							</div>
 							<!-- /Sidebar -->
@@ -280,7 +282,7 @@
 									</div>
 									<div class="user-active">
 										<div class="user-img">
-											<a href="javascript:void(0);"><img class="avatar" src="assets/img/profiles/avatar-03.jpg" alt="Image"></a>
+											<a href="javascript:void(0);"><img class="avatar" src="assets/img/profiles/avatar-01.jpg" alt="Image"></a>
 											<span class="avatar-online"></span>
 										</div>
 										<div class="user-name">
@@ -301,11 +303,17 @@
 									</ul>
 								</div>
 								<!-- /Enquiry -->
-
-								
-
-								
-							</div>
+								<div class="sidebar-card">
+									<div class="sidebar-card-title">
+										<h5>Medical Document</h5>
+									</div>
+									<form action="#">
+									</form>
+									<a class="property-img">
+										<img class="img-fluid" alt="Property Image" src="assets/img/property/large.png">
+									</a>
+								</div>
+								</div>
 						</div>
 						<!-- /Sidebar -->
 
@@ -317,34 +325,21 @@
 
 			
 
-			<!-- Search -->
-			<div class="search-popup js-search-popup ">
-				<a href="javascript:void(0);" class="close-button" id="search-close" aria-label="Close search">
-					<i class="fa fa-close"></i>
-				</a>
-				<div class="popup-inner">
-					<div class="inner-container">
-						<form class="search-form" id="search-form" action="rent-property-grid.html">
-							<h3>What Are You Looking for?</h3>
-							<div class="search-form-box flex">
-								<input type="text" class="search-input" placeholder="Type a  Keyword...." id="search-input" aria-label="Type to search" role="searchbox" autocomplete="off">
-								<button type="submit" class="search-icon"><i class="bx bx-search"></i></button>
+			
+			<div class="modal fade modal-succeess" id="success" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog  modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="success-popup">
+								<h4><img src="assets/img/icons/double-tick.svg" alt="img"></h4>
+								<h5> Successful</h5>
+								<p>Application has been Approved.</p>
+								<a href="contact-us.html" class="btn btn-primary w-100">Approved </a>
 							</div>
-							<h5>Popular Properties</h5>
-							<ul>
-								<li><a href="rent-property-grid.html">Beautiful Condo Room</a></li>
-								<li><a href="rent-property-grid.html">Royal Apartment</a></li>
-								<li><a href="rent-property-grid.html">Grand Villa House</a></li>
-								<li><a href="rent-property-grid.html">Grand Mahaka</a></li>
-								<li><a href="rent-property-grid.html">Lunaria Residence</a></li>
-								<li><a href="rent-property-grid.html">Stephen Alexander Homes</a></li>
-							</ul>
-						</form>
+						</div>
 					</div>
 				</div>
-			</div>	
-			<!-- /Search -->
-
+			</div>
 		</div>		
 		<!-- /Main Wrapper -->
 
