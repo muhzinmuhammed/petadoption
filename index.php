@@ -53,43 +53,7 @@
 		<div class="main-wrapper">
 
 			<!-- Header -->
-			<header class="header header-fix">
-				
-				<nav class="navbar navbar-expand-lg header-nav">
-					<div class="navbar-header">
-						<a id="mobile_btn" href="javascript:void(0);">
-							<span class="bar-icon">
-								<span></span>
-								<span></span>
-								<span></span>
-							</span>
-						</a>
-						<a href="index.html" class="navbar-brand logo">
-							<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
-						</a>
-					</div>
-					
-					<li class="searchbar">
-						<div class="filter-content looking-input form-group mb-0">
-								  <input type="text" class="form-control" placeholder="Search">
-							  </div>
-							 
-					</li>
-					<ul class="nav header-navbar-rht">
-						<li class="new-property-btn">
-							<a href="add-new-property.html">
-								<i class="bx bxs-plus-circle"></i> Sell pet
-							</a>
-						</li>
-						<li>
-							<a href="register.html" class="btn btn-primary"><i class="feather-user-plus"></i>Sign Up</a>
-						</li>
-						<li>
-							<a href="login.html" class="btn sign-btn"><i class="feather-unlock"></i>Sign In</a>
-						</li>
-					</ul>
-				</nav>
-			</header>
+			<?php include './navbar.php'; ?>
 			<!-- /Header -->
 			
 			<!-- Home Banner -->

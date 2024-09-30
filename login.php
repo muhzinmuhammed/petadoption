@@ -47,29 +47,21 @@
 						<div class="login-auth">
 							<div class="login-auth-wrap">
 								<h1>Hey There!!! Welcome Back.</h1>							
-								<form action="index.html">
-									<div class="form-group">
-										<label class="form-label">Email <span>*</span></label>
-										<input type="email" class="form-control"  placeholder="Enter Email">
-									</div>
-									<div class="form-group">
-										<label class="form-label">Password <span>*</span></label>
-										<div class="pass-group">
-											<input type="password" class="form-control pass-input" placeholder="Enter Password">
-											<span class="fas fa-eye toggle-password"></span>
-										</div>
-									</div>								
-									<div class="form-group mb-5">
-										<a class="forgot-link" href="forgot-password.html">Forgot Password ?</a>
-									</div>
-									
-									<a href="index.html" class="btn btn-outline-light w-100 btn-size">Sign In</a>
-									<div class="login-or">
-										<span class="span-or-log">Or, Sign in with your email</span>
-									</div>
-									
-									<div class="text-center dont-have">Don't have an account ? <a href="register.html">Sign Up</a></div>
-								</form>							
+								<form action="./action_login.php" method="POST">
+                                <div class="form-group">
+                                    <label class="form-label">Email <span>*</span></label>
+                                    <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Password <span>*</span></label>
+                                    <div class="pass-group">
+                                        <input type="password" class="form-control pass-input" name="password" placeholder="Enter Password" required>
+                                        <span class="fas fa-eye toggle-password"></span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline-light w-100 btn-size">Sign In</button>
+                                <div class="text-center dont-have">Don't have an account? <a href="register.php">Sign Up</a></div>
+                            </form>						
 							</div>
 						</div>
 					</div>
