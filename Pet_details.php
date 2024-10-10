@@ -1,3 +1,34 @@
+<?php
+require_once './config.php'; // Your Firebase configuration file
+require_once './firebaseRDB.php'; // FirebaseRDB class file
+
+// Initialize the FirebaseRDB class
+$db = new firebaseRDB($databaseURL);
+
+// Get the key from the URL parameter
+$key = isset($_GET['id']) ? $_GET['id'] : null;
+
+if ($key) {
+    try {
+        // Fetch data from the 'properties' node using the key
+        $response = $db->retrieve('pets/' . $key);
+
+        // Decode the JSON response to an array
+        $pets = json_decode($response, true);
+
+        // Handle the case when property is not found
+        if (!$pets) {
+            throw new Exception("pets not found");
+        }
+    }
+    catch (Exception $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+} else {
+    echo 'No pets key specified';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -81,7 +112,7 @@
                     <ul class="nav header-navbar-rht">
                         
                         <li>
-                            <a href="rental-order-step2.html" class="btn btn-primary">Go to Order</a>
+                            <a href="./rental-order-step3.php?id=<?php echo urlencode($key)?>" class="btn btn-primary">Go to Order</a>
                         </li>
                         
                     </ul>
@@ -106,23 +137,23 @@
 			<div class="user-info-wrap">
 				<div class="col-lg-8">
 					<div class="buy-btn">
-						<span class="buy">Dog</span>
-						<span class="appartment">vaccinated</span>
+						<span class="buy">        <?php echo htmlspecialchars($pets['petType'])?> </span>
+						<!-- <span class="appartment">vaccinated</span> -->
 					</div>
 					<div class="page-title">
-						<h3>Modern Apartment in the City Center<span><img src="assets/img/icons/location-icon.svg" alt="Image"></span></h3>
-						<p><i class="feather-map-pin"></i> 318-330 S Oakley Blvd, Chicago, IL 60612, USA</p>
+						<!-- <h3>Modern Apartment in the City Center<span><img src="assets/img/icons/location-icon.svg" alt="Image"></span></h3> -->
+						<p><i class="feather-map-pin"></i> <?php echo($pets['location']) ?></p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="latest-update">
-						<h5>Post on : 15 Jan 2023</h5>
-						<p>₹4,000</p>
-						<ul class="other-pages">
+						<!-- <h5>Post on : 15 Jan 2023</h5> -->
+						<p><?php echo($pets['price']) ?></p>
+						<!-- <ul class="other-pages">
 							<li><a href="javascript:void(0);"><i class="feather-share-2"></i>Share</a></li>
 							
 							<li><a href="javascript:void(0);"><i class="feather-heart"></i>Wishlist</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>								
@@ -174,8 +205,7 @@
 								</h4>
 								<div id="about" class="card-collapse collapse show">
 									<div class="about-agent collapse-view">
-										<p> Good road frontage on a paved  county road with utilities make it an amazing setting for yourdream country getaway! If you like views, you must see  this property!, <p>										   
-									   <p>This property is mostly wooded and sits high on a hilltop overlooking the Mohawk River Valley.Located right in the heart of Upstate NYs Amish farm Country, this land is certified organic makingit extremely rare! Good road frontage on a paved  county road with utilities make it an amazingsetting for your dream country getaway! If you like views, you must see  this property!This propertyis mostly wooded and sits high on a hilltop overlooking the Mohawk River Valley. Located right inthe heart of Upstate NYs Amish farm Country, this land is certified organic making it extremelyrare! Good road frontage on a paved  county road with utilities make it an amazing setting for yourdream country getaway! If you like views, you must see  this property!</p>
+										<p><?php echo($pets['descrption']) ?></p>
 									</div>
 								</div>
 							</div>
@@ -190,10 +220,10 @@
 									<div class="row">
 										<div class="col-md-4">
 											<ul class="property-details">
-												<li>Name : <span> 22972</span></li>
-												<li>BREED : <span>  190 ft2</span></li> 
-												<li>Age : <span>  190 ft2</span></li> 
-												<li>Weight : <span> 2 cars </span></li>
+												<li>Name : <span> <?php echo($pets['petName']) ?></span></li>
+												<li>BREED : <span> <?php echo($pets['breed']) ?></span></li> 
+												<li>Age : <span>  <?php echo($pets['age']) ?></span></li> 
+												<li>Weight : <span> <?php echo($pets['weight']) ?> </span></li>
 												
 												
 												
@@ -204,11 +234,11 @@
 											<ul class="property-details">
 											
 												 
-												<li>Skin color : <span> 2 cars </span></li> 
-												<li>Last vaccation Date: <span> 2 cars </span></li> 
+												<li>Skin color : <span> <?php echo($pets['skinColor']) ?> </span></li> 
+												<li>Last vaccation Date: <span> <?php echo($pets['vaccinationDate']) ?> </span></li> 
 												
-												<li> Special Needs :  <span> 2005</span></li>
-												<li> Price : <span> $ 860,000 </span></li> 
+												<li> Special Needs :  <span> <?php echo($pets['specialNeeds']) ?></span></li>
+												<li> Price : <span> <?php echo($pets['price']) ?> </span></li> 
 												
 											</ul>
 										</div>
@@ -231,8 +261,8 @@
 										<a href="javascript:void(0);"><img class="avatar" src="assets/img/profiles/avatar-01.jpg" alt="Image"></a>
 									</div>
 									<div class="user-name">
-										<h4><a href="javascript:void(0);">John Collins</a></h4>
-										<div class="rating">
+										<h4><a href="javascript:void(0);"><?php echo($pets['userName']) ?></a></h4>
+										<!-- <div class="rating">
 											<span class="rating-count d-inline-flex">
 												<i class="fa-solid fa-star checked"></i>
 												<i class="fa-solid fa-star checked"></i>
@@ -241,17 +271,17 @@
 												<i class="fa-solid fa-star checked"></i>
 											</span>
 											<span class="rating-review">5.0 (20 Reviews)</span>
-										</div>
+										</div> -->
 									</div>
 								</div>
-								<ul class="list-details">
+								<!-- <ul class="list-details">
 									
 									<li>Address<span>225</span></li>
 									<li>No of Selling<span>225</span></li>
 									<li>Memeber on<span>15 Jan 2023</span></li>
 									<li>Verification<span>Verified</span></li>
 									
-								</ul>
+								</ul> -->
 							</div>
 							<!-- /Pet Owner Details -->
 
@@ -275,16 +305,27 @@
 											<span class="avatar-online"></span>
 										</div>
 										<div class="user-name">
-											<h4><a href="javascript:void(0);">John Collins</a></h4>
+											<h4><a href="javascript:void(0);"><?php echo($pets['userName']) ?></a></h4>
 											
 										</div>
 									</div>
 									<form action="#">
 									</form>
 									<ul class="connect-us">
-										<li><a href="javascript:void(0);"><i class="feather-phone"></i>Call Us</a></li>
-										<li><a href="javascript:void(0);"><i class="fa-brands fa-whatsapp"></i>Whatsapp</a></li>
-									</ul>
+    <!-- Call Us: Opens phone dialer -->
+    <li>
+        <a href="tel:<?php echo($pets['phone']); ?>">
+            <i class="feather-phone"></i> Call Us
+        </a>
+    </li>
+    <!-- WhatsApp: Opens WhatsApp chat -->
+    <li>
+        <a href="https://wa.me/<?php echo($pets['phone']); ?>" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+    </li>
+</ul>
+
 								</div>
 								<!-- /Enquiry -->
 								<div class="sidebar-card">

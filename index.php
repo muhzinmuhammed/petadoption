@@ -1,3 +1,24 @@
+<?php
+require_once './config.php'; // Your Firebase configuration file
+require_once './firebaseRDB.php'; // FirebaseRDB class file
+
+// Initialize the FirebaseRDB class
+$db = new firebaseRDB($databaseURL);
+
+try {
+    // Fetch data from the 'properties' node
+    $response = $db->retrieve('pets');
+
+    // Decode the JSON response to an array
+    $pets = json_decode($response, true);
+
+    // Capture the keys (IDs) for each property
+    $petsIDs = array_keys($pets);
+}
+catch (Exception $e) {
+    echo 'Error: ' . $e->getMessage();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -159,363 +180,59 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<div class="feature-slider owl-carousel">
-								<div class="slider-col">
-									<div class="product-custom"  data-aos="fade-down" data-aos-duration="1000">
-										<div class="profile-widget">
-											<div class="doc-img">
-												<a href="Pet_details.html" class="property-img">
-													<img class="img-fluid" alt="Property Image" src="assets/img/product/product-1.jpg">
-												</a>
-												<div class="product-amount">
-													<span>$41,000</span>
-												</div>
-												<div class="feature-rating">
-													<div>
-														<div class="new-featured">
-															<span>New</span>
-														</div>
-													</div>
-													<a href="javascript:void(0)">
-														<div class="favourite selected">
-															<span><i class="fa-regular fa-heart"></i></span>
-														</div>
-													</a>
-												</div>
-											</div>
-											<div class="pro-content">
-                                               
-												<h3 class="title">
-													<a href="Pet_details.html">Leo</a> 
-												</h3>
-												<p><span><i class="feather-map-pin"></i></span>Kothamangalam,Ernakulam,Kerala</p>
-												
-					
-												<ul class="property-category d-flex justify-content-between">
-													<li>
-														<span class="list">Posted on : </span>
-														<span class="date">16 Jan 2023</span>
-													</li>
-													<li>
-														<span class="category list">Breed : </span>
-														<span class="category-value date">BullDog</span>
-													</li>
-												</ul>
-											</div>
-										</div>		
-									</div>
-									<div class="product-custom"  data-aos="fade-down" data-aos-duration="1000">
-										<div class="profile-widget">
-											<div class="doc-img">
-												<a href="Pet_details.html" class="property-img">
-													<img class="img-fluid" alt="Property Image" src="assets/img/product/product-2.jpg">
-												</a>
-												<div class="product-amount">
-													<span>$41,000</span>
-												</div>
-												<div class="feature-rating">
-													<div>
-														<div class="new-featured">
-															<span>New</span>
-														</div>
-													</div>
-													<a href="javascript:void(0)">
-														<div class="favourite selected">
-															<span><i class="fa-regular fa-heart"></i></span>
-														</div>
-													</a>
-												</div>
-											</div>
-											<div class="pro-content">
-                                               
-												<h3 class="title">
-													<a href="Pet_details.html">Leo</a> 
-												</h3>
-												<p><span><i class="feather-map-pin"></i></span>Kothamangalam,Ernakulam,Kerala</p>
-												
-					
-												<ul class="property-category d-flex justify-content-between">
-													<li>
-														<span class="list">Posted on : </span>
-														<span class="date">16 Jan 2023</span>
-													</li>
-													<li>
-														<span class="category list">Breed : </span>
-														<span class="category-value date">BullDog</span>
-													</li>
-												</ul>
-											</div>
-										</div>		
-									</div>
-								</div>
-								<div class="slider-col">
-									<div class="product-custom"  data-aos="fade-down" data-aos-duration="1000">
-										<div class="profile-widget">
-											<div class="doc-img">
-												<a href="Pet_details.html" class="property-img">
-													<img class="img-fluid" alt="Property Image" src="assets/img/product/product-3.jpg">
-												</a>
-												<div class="product-amount">
-													<span>$41,000</span>
-												</div>
-												<div class="feature-rating">
-													<div>
-														<div class="new-featured">
-															<span>New</span>
-														</div>
-													</div>
-													<a href="javascript:void(0)">
-														<div class="favourite selected">
-															<span><i class="fa-regular fa-heart"></i></span>
-														</div>
-													</a>
-												</div>
-											</div>
-											<div class="pro-content">
-                                               
-												<h3 class="title">
-													<a href="Pet_details.html">Leo</a> 
-												</h3>
-												<p><span><i class="feather-map-pin"></i></span>Kothamangalam,Ernakulam,Kerala</p>
-												
-					
-												<ul class="property-category d-flex justify-content-between">
-													<li>
-														<span class="list">Posted on : </span>
-														<span class="date">16 Jan 2023</span>
-													</li>
-													<li>
-														<span class="category list">Breed : </span>
-														<span class="category-value date">BullDog</span>
-													</li>
-												</ul>
-											</div>
-										</div>		
-									</div>
-									<div class="product-custom"  data-aos="fade-down" data-aos-duration="1000">
-										<div class="profile-widget">
-											<div class="doc-img">
-												<a href="Pet_details.html" class="property-img">
-													<img class="img-fluid" alt="Property Image" src="assets/img/product/product-8.jpg">
-												</a>
-												<div class="product-amount">
-													<span>$41,000</span>
-												</div>
-												<div class="feature-rating">
-													<div>
-														<div class="new-featured">
-															<span>New</span>
-														</div>
-													</div>
-													<a href="javascript:void(0)">
-														<div class="favourite selected">
-															<span><i class="fa-regular fa-heart"></i></span>
-														</div>
-													</a>
-												</div>
-											</div>
-											<div class="pro-content">
-                                               
-												<h3 class="title">
-													<a href="Pet_details.html">Leo</a> 
-												</h3>
-												<p><span><i class="feather-map-pin"></i></span>Kothamangalam,Ernakulam,Kerala</p>
-												
-					
-												<ul class="property-category d-flex justify-content-between">
-													<li>
-														<span class="list">Posted on : </span>
-														<span class="date">16 Jan 2023</span>
-													</li>
-													<li>
-														<span class="category list">Breed : </span>
-														<span class="category-value date">BullDog</span>
-													</li>
-												</ul>
-											</div>
-										</div>		
-									</div>
-								</div>
-								<div class="slider-col">
-									<div class="product-custom"  data-aos="fade-down" data-aos-duration="1000">
-										<div class="profile-widget">
-											<div class="doc-img">
-												<a href="Pet_details.html" class="property-img">
-													<img class="img-fluid" alt="Property Image" src="assets/img/product/product-5.jpg">
-												</a>
-												<div class="product-amount">
-													<span>$41,000</span>
-												</div>
-												<div class="feature-rating">
-													<div>
-														<div class="new-featured">
-															<span>New</span>
-														</div>
-													</div>
-													<a href="javascript:void(0)">
-														<div class="favourite selected">
-															<span><i class="fa-regular fa-heart"></i></span>
-														</div>
-													</a>
-												</div>
-											</div>
-											<div class="pro-content">
-                                               
-												<h3 class="title">
-													<a href="Pet_details.html">Leo</a> 
-												</h3>
-												<p><span><i class="feather-map-pin"></i></span>Kothamangalam,Ernakulam,Kerala</p>
-												
-					
-												<ul class="property-category d-flex justify-content-between">
-													<li>
-														<span class="list">Posted on : </span>
-														<span class="date">16 Jan 2023</span>
-													</li>
-													<li>
-														<span class="category list">Breed : </span>
-														<span class="category-value date">BullDog</span>
-													</li>
-												</ul>
-											</div>
-										</div>		
-									</div>
-									<div class="product-custom"  data-aos="fade-down" data-aos-duration="1000">
-										<div class="profile-widget">
-											<div class="doc-img">
-												<a href="Pet_details.html" class="property-img">
-													<img class="img-fluid" alt="Property Image" src="assets/img/product/product-6.jpg">
-												</a>
-												<div class="product-amount">
-													<span>$41,000</span>
-												</div>
-												<div class="feature-rating">
-													<div>
-														<div class="new-featured">
-															<span>New</span>
-														</div>
-													</div>
-													<a href="javascript:void(0)">
-														<div class="favourite selected">
-															<span><i class="fa-regular fa-heart"></i></span>
-														</div>
-													</a>
-												</div>
-											</div>
-											<div class="pro-content">
-                                               
-												<h3 class="title">
-													<a href="Pet_details.html">Leo</a> 
-												</h3>
-												<p><span><i class="feather-map-pin"></i></span>Kothamangalam,Ernakulam,Kerala</p>
-												
-					
-												<ul class="property-category d-flex justify-content-between">
-													<li>
-														<span class="list">Posted on : </span>
-														<span class="date">16 Jan 2023</span>
-													</li>
-													<li>
-														<span class="category list">Breed : </span>
-														<span class="category-value date">BullDog</span>
-													</li>
-												</ul>
-											</div>
-										</div>		
-									</div>
-								</div>
-								<div class="slider-col">
-									<div class="product-custom"  data-aos="fade-down" data-aos-duration="1000">
-										<div class="profile-widget">
-											<div class="doc-img">
-												<a href="Pet_details.html" class="property-img">
-													<img class="img-fluid" alt="Property Image" src="assets/img/product/product-7.jpg">
-												</a>
-												<div class="product-amount">
-													<span>$41,000</span>
-												</div>
-												<div class="feature-rating">
-													<div>
-														<div class="new-featured">
-															<span>New</span>
-														</div>
-													</div>
-													<a href="javascript:void(0)">
-														<div class="favourite selected">
-															<span><i class="fa-regular fa-heart"></i></span>
-														</div>
-													</a>
-												</div>
-											</div>
-											<div class="pro-content">
-                                               
-												<h3 class="title">
-													<a href="Pet_details.html">Leo</a> 
-												</h3>
-												<p><span><i class="feather-map-pin"></i></span>Kothamangalam,Ernakulam,Kerala</p>
-												
-					
-												<ul class="property-category d-flex justify-content-between">
-													<li>
-														<span class="list">Posted on : </span>
-														<span class="date">16 Jan 2023</span>
-													</li>
-													<li>
-														<span class="category list">Breed : </span>
-														<span class="category-value date">BullDog</span>
-													</li>
-												</ul>
-											</div>
-										</div>		
-									</div>
-									<div class="product-custom"  data-aos="fade-down" data-aos-duration="1000">
-										<div class="profile-widget">
-											<div class="doc-img">
-												<a href="Pet_details.html" class="property-img">
-													<img class="img-fluid" alt="Property Image" src="assets/img/product/product-4.jpg">
-												</a>
-												<div class="product-amount">
-													<span>$41,000</span>
-												</div>
-												<div class="feature-rating">
-													<div>
-														<div class="new-featured">
-															<span>New</span>
-														</div>
-													</div>
-													<a href="javascript:void(0)">
-														<div class="favourite selected">
-															<span><i class="fa-regular fa-heart"></i></span>
-														</div>
-													</a>
-												</div>
-											</div>
-											<div class="pro-content">
-                                               
-												<h3 class="title">
-													<a href="Pet_details.html">Leo</a> 
-												</h3>
-												<p><span><i class="feather-map-pin"></i></span>Kothamangalam,Ernakulam,Kerala</p>
-												
-					
-												<ul class="property-category d-flex justify-content-between">
-													<li>
-														<span class="list">Posted on : </span>
-														<span class="date">16 Jan 2023</span>
-													</li>
-													<li>
-														<span class="category list">Breed : </span>
-														<span class="category-value date">BullDog</span>
-													</li>
-												</ul>
-											</div>
-										</div>		
-									</div>
-									
-								</div>
-							</div>
+						<div class="feature-slider owl-carousel">
+        <?php $index = 0; ?>
+        <?php foreach ($pets as $key => $pet) : ?>
+            <?php if ($pet['status'] === true) : ?> 
+            <div class="slider-col">
+                <div class="product-custom" data-aos="fade-down" data-aos-duration="2000">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a href="Pet_details.php?id=<?php echo urlencode($key); ?>" class="property-img">
+                                <img class="img-fluid" 
+                                     src="<?php 
+                                     if ($index % 3 == 0) {
+										echo './assets/img/product/product-7.jpg';
+										
+                                     } elseif ($index % 3 == 1) {
+										echo './assets/img/product/product-2.jpg';
+                                     } elseif ($index % 3 == 2) {
+										echo './assets/img/product/product-3.jpg';
+                                     } 
+                                     ?>" 
+                                     alt="Property Image">
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a href="Pet_details.php?id=<?php echo urlencode($key); ?>"><?php echo htmlspecialchars($pet['petName']); ?></a>
+                            </h3>
+                            <p><i class="feather-map-pin"></i><?php echo htmlspecialchars($pet['location']); ?></p>
+                            <ul class="property-category d-flex justify-content-between align-items-center">
+                                <li class="user-info">
+                                    <a href="Pet_details.php?id=<?php echo urlencode($key); ?>"></a>
+                                    <div class="user-name">
+                                        <h6><a href="Pet_details.php?id=<?php echo urlencode($key); ?>"><?php echo htmlspecialchars($pet['userName']); ?></a></h6>
+                                        <p><?php echo htmlspecialchars($pet['petType']); ?></p>
+										<p><?php echo htmlspecialchars($pet['price']); ?></p>
+
+                                    </div>                                                 
+                                </li>
+                                <li>
+                                    <a href="Pet_details.php?id=<?php echo urlencode($key); ?>" class="btn-primary">Buy Now</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+            <?php $index++; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+       
+    </div>
 							<div class="view-property-btn d-flex justify-content-center"  data-aos="fade-down" data-aos-duration="1000">
-								<a href="rent-property-grid.html" class="btn-primary">View All Properties</a>
+								<!-- <a href="" class="btn-primary">View All Properties</a> -->
 							</div>
 						</div>
 					</div>
